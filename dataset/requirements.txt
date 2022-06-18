@@ -1,0 +1,9 @@
+soundfile
+sounddevice
+numpy
+sox
+python-cfonts
+nltk
+keyboard
+soundcard
+websockets

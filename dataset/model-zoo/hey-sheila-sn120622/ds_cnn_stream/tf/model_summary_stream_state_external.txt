@@ -1,0 +1,208 @@
+Model: "model_1"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_audio (InputLayer)       [(1, 320)]           0           []                               
+                                                                                                  
+ speech_features (SpeechFeature  (1, 1, 20)          0           ['input_audio[0][0]']            
+ s)                                                                                               
+                                                                                                  
+ tf_op_layer_ExpandDims (Tensor  (1, 1, 20, 1)       0           ['speech_features[0][0]']        
+ FlowOpLayer)                                                                                     
+                                                                                                  
+ stream (Stream)                (1, 1, 18, 300)      3000        ['tf_op_layer_ExpandDims[0][0]'] 
+                                                                                                  
+ batch_normalization (BatchNorm  (1, 1, 18, 300)     900         ['stream[0][0]']                 
+ alization)                                                                                       
+                                                                                                  
+ activation (Activation)        (1, 1, 18, 300)      0           ['batch_normalization[0][0]']    
+                                                                                                  
+ stream_1 (Stream)              (1, 1, 16, 300)      3000        ['activation[0][0]']             
+                                                                                                  
+ batch_normalization_1 (BatchNo  (1, 1, 16, 300)     900         ['stream_1[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ activation_1 (Activation)      (1, 1, 16, 300)      0           ['batch_normalization_1[0][0]']  
+                                                                                                  
+ conv2d_1 (Conv2D)              (1, 1, 16, 300)      90300       ['activation_1[0][0]']           
+                                                                                                  
+ batch_normalization_2 (BatchNo  (1, 1, 16, 300)     900         ['conv2d_1[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ activation_2 (Activation)      (1, 1, 16, 300)      0           ['batch_normalization_2[0][0]']  
+                                                                                                  
+ stream_2 (Stream)              (1, 1, 12, 300)      3000        ['activation_2[0][0]']           
+                                                                                                  
+ batch_normalization_3 (BatchNo  (1, 1, 12, 300)     900         ['stream_2[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ activation_3 (Activation)      (1, 1, 12, 300)      0           ['batch_normalization_3[0][0]']  
+                                                                                                  
+ conv2d_2 (Conv2D)              (1, 1, 12, 300)      90300       ['activation_3[0][0]']           
+                                                                                                  
+ batch_normalization_4 (BatchNo  (1, 1, 12, 300)     900         ['conv2d_2[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ activation_4 (Activation)      (1, 1, 12, 300)      0           ['batch_normalization_4[0][0]']  
+                                                                                                  
+ stream_3 (Stream)              (1, 1, 10, 300)      9300        ['activation_4[0][0]']           
+                                                                                                  
+ batch_normalization_5 (BatchNo  (1, 1, 10, 300)     900         ['stream_3[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ activation_5 (Activation)      (1, 1, 10, 300)      0           ['batch_normalization_5[0][0]']  
+                                                                                                  
+ conv2d_3 (Conv2D)              (1, 1, 10, 300)      90300       ['activation_5[0][0]']           
+                                                                                                  
+ batch_normalization_6 (BatchNo  (1, 1, 10, 300)     900         ['conv2d_3[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ activation_6 (Activation)      (1, 1, 10, 300)      0           ['batch_normalization_6[0][0]']  
+                                                                                                  
+ stream_4 (Stream)              (1, 1, 6, 300)       4800        ['activation_6[0][0]']           
+                                                                                                  
+ batch_normalization_7 (BatchNo  (1, 1, 6, 300)      900         ['stream_4[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ activation_7 (Activation)      (1, 1, 6, 300)       0           ['batch_normalization_7[0][0]']  
+                                                                                                  
+ conv2d_4 (Conv2D)              (1, 1, 6, 300)       90300       ['activation_7[0][0]']           
+                                                                                                  
+ batch_normalization_8 (BatchNo  (1, 1, 6, 300)      900         ['conv2d_4[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ activation_8 (Activation)      (1, 1, 6, 300)       0           ['batch_normalization_8[0][0]']  
+                                                                                                  
+ stream_5 (Stream)              (1, 1, 4, 300)       9300        ['activation_8[0][0]']           
+                                                                                                  
+ batch_normalization_9 (BatchNo  (1, 1, 4, 300)      900         ['stream_5[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ activation_9 (Activation)      (1, 1, 4, 300)       0           ['batch_normalization_9[0][0]']  
+                                                                                                  
+ conv2d_5 (Conv2D)              (1, 1, 4, 300)       90300       ['activation_9[0][0]']           
+                                                                                                  
+ batch_normalization_10 (BatchN  (1, 1, 4, 300)      900         ['conv2d_5[0][0]']               
+ ormalization)                                                                                    
+                                                                                                  
+ activation_10 (Activation)     (1, 1, 4, 300)       0           ['batch_normalization_10[0][0]'] 
+                                                                                                  
+ stream_6 (Stream)              (1, 1, 1, 300)       0           ['activation_10[0][0]']          
+                                                                                                  
+ stream_7 (Stream)              (1, 300)             0           ['stream_6[0][0]']               
+                                                                                                  
+ dropout (Dropout)              (1, 300)             0           ['stream_7[0][0]']               
+                                                                                                  
+ data_frame_1input_state (Input  [(1, 640)]          0           []                               
+ Layer)                                                                                           
+                                                                                                  
+ lambda_8 (Lambda)              (1, 320)             0           ['input_audio[0][0]']            
+                                                                                                  
+ stream/ExternalState (InputLay  [(1, 5, 20, 1)]     0           []                               
+ er)                                                                                              
+                                                                                                  
+ stream_1/ExternalState (InputL  [(1, 3, 18, 300)]   0           []                               
+ ayer)                                                                                            
+                                                                                                  
+ stream_2/ExternalState (InputL  [(1, 5, 16, 300)]   0           []                               
+ ayer)                                                                                            
+                                                                                                  
+ stream_3/ExternalState (InputL  [(1, 10, 12, 300)]  0           []                               
+ ayer)                                                                                            
+                                                                                                  
+ stream_4/ExternalState (InputL  [(1, 9, 10, 300)]   0           []                               
+ ayer)                                                                                            
+                                                                                                  
+ stream_5/ExternalState (InputL  [(1, 10, 6, 300)]   0           []                               
+ ayer)                                                                                            
+                                                                                                  
+ stream_6/ExternalState (InputL  [(1, 13, 4, 300)]   0           []                               
+ ayer)                                                                                            
+                                                                                                  
+ stream_7/ExternalState (InputL  [(1, 1, 1, 300)]    0           []                               
+ ayer)                                                                                            
+                                                                                                  
+ dense (Dense)                  (1, 7)               2107        ['dropout[0][0]']                
+                                                                                                  
+ tf_op_layer_streaming/speech_f  [(1, 320)]          0           ['data_frame_1input_state[0][0]']
+ eatures/data_frame_1/strided_s                                                                   
+ lice (TensorFlowOpLayer)                                                                         
+                                                                                                  
+ lambda_7 (Lambda)              (1, 320)             0           ['lambda_8[0][0]']               
+                                                                                                  
+ tf_op_layer_streaming/stream/s  [(1, 4, 20, 1)]     0           ['stream/ExternalState[0][0]']   
+ trided_slice (TensorFlowOpLaye                                                                   
+ r)                                                                                               
+                                                                                                  
+ tf_op_layer_streaming/stream_1  [(1, 2, 18, 300)]   0           ['stream_1/ExternalState[0][0]'] 
+ /strided_slice (TensorFlowOpLa                                                                   
+ yer)                                                                                             
+                                                                                                  
+ tf_op_layer_streaming/stream_2  [(1, 4, 16, 300)]   0           ['stream_2/ExternalState[0][0]'] 
+ /strided_slice (TensorFlowOpLa                                                                   
+ yer)                                                                                             
+                                                                                                  
+ tf_op_layer_streaming/stream_3  [(1, 9, 12, 300)]   0           ['stream_3/ExternalState[0][0]'] 
+ /strided_slice (TensorFlowOpLa                                                                   
+ yer)                                                                                             
+                                                                                                  
+ tf_op_layer_streaming/stream_4  [(1, 8, 10, 300)]   0           ['stream_4/ExternalState[0][0]'] 
+ /strided_slice (TensorFlowOpLa                                                                   
+ yer)                                                                                             
+                                                                                                  
+ tf_op_layer_streaming/stream_5  [(1, 9, 6, 300)]    0           ['stream_5/ExternalState[0][0]'] 
+ /strided_slice (TensorFlowOpLa                                                                   
+ yer)                                                                                             
+                                                                                                  
+ tf_op_layer_streaming/stream_6  [(1, 12, 4, 300)]   0           ['stream_6/ExternalState[0][0]'] 
+ /strided_slice (TensorFlowOpLa                                                                   
+ yer)                                                                                             
+                                                                                                  
+ tf_op_layer_streaming/stream_7  [(1, 0, 1, 300)]    0           ['stream_7/ExternalState[0][0]'] 
+ /strided_slice (TensorFlowOpLa                                                                   
+ yer)                                                                                             
+                                                                                                  
+ activation_11 (Activation)     (1, 7)               0           ['dense[0][0]']                  
+                                                                                                  
+ tf_op_layer_streaming/speech_f  [(1, 640)]          0           ['tf_op_layer_streaming/speech_fe
+ eatures/data_frame_1/concat (T                                  atures/data_frame_1/strided_slice
+ ensorFlowOpLayer)                                               [0][0]',                         
+                                                                  'lambda_7[0][0]']               
+                                                                                                  
+ tf_op_layer_streaming/stream/c  [(1, 5, 20, 1)]     0           ['tf_op_layer_streaming/stream/st
+ oncat (TensorFlowOpLayer)                                       rided_slice[0][0]',              
+                                                                  'tf_op_layer_ExpandDims[0][0]'] 
+                                                                                                  
+ tf_op_layer_streaming/stream_1  [(1, 3, 18, 300)]   0           ['tf_op_layer_streaming/stream_1/
+ /concat (TensorFlowOpLayer)                                     strided_slice[0][0]',            
+                                                                  'activation[0][0]']             
+                                                                                                  
+ tf_op_layer_streaming/stream_2  [(1, 5, 16, 300)]   0           ['tf_op_layer_streaming/stream_2/
+ /concat (TensorFlowOpLayer)                                     strided_slice[0][0]',            
+                                                                  'activation_2[0][0]']           
+                                                                                                  
+ tf_op_layer_streaming/stream_3  [(1, 10, 12, 300)]  0           ['tf_op_layer_streaming/stream_3/
+ /concat (TensorFlowOpLayer)                                     strided_slice[0][0]',            
+                                                                  'activation_4[0][0]']           
+                                                                                                  
+ tf_op_layer_streaming/stream_4  [(1, 9, 10, 300)]   0           ['tf_op_layer_streaming/stream_4/
+ /concat (TensorFlowOpLayer)                                     strided_slice[0][0]',            
+                                                                  'activation_6[0][0]']           
+                                                                                                  
+ tf_op_layer_streaming/stream_5  [(1, 10, 6, 300)]   0           ['tf_op_layer_streaming/stream_5/
+ /concat (TensorFlowOpLayer)                                     strided_slice[0][0]',            
+                                                                  'activation_8[0][0]']           
+                                                                                                  
+ tf_op_layer_streaming/stream_6  [(1, 13, 4, 300)]   0           ['tf_op_layer_streaming/stream_6/
+ /concat (TensorFlowOpLayer)                                     strided_slice[0][0]',            
+                                                                  'activation_10[0][0]']          
+                                                                                                  
+ tf_op_layer_streaming/stream_7  [(1, 1, 1, 300)]    0           ['tf_op_layer_streaming/stream_7/
+ /concat (TensorFlowOpLayer)                                     strided_slice[0][0]',            
+                                                                  'stream_6[0][0]']               
+                                                                                                  
+==================================================================================================
+Total params: 495,907
+Trainable params: 489,307
+Non-trainable params: 6,600
+__________________________________________________________________________________________________
