@@ -48,7 +48,7 @@ def main_body():
   parser.add_argument('--source_dir', default='./in', help='source dir location')
   parser.add_argument('--dest_dir', type=str, default='./out', help='dest dir location')
   parser.add_argument('--testing_percent', type=float, default=0.05, help='decimal percentage of testing qty')
-  parser.add_argument('--validation_percent', type=float, default=0.10, help='decimal percentage of validation qty')
+  parser.add_argument('--validation_percent', type=float, default=0.15, help='decimal percentage of validation qty')
   parser.add_argument('--label', type=str, default='kw', help='label name')
   args = parser.parse_args()
 

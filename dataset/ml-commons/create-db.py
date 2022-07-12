@@ -38,7 +38,7 @@ import os
 import sqlite3
 import glob
 import nltk
-nltk.download('punkt')
+#nltk.download('punkt')
 
 import re
 import warnings
@@ -50,7 +50,7 @@ from nltk.tokenize import SyllableTokenizer
 from nltk import word_tokenize
 
 from nltk.corpus import cmudict
-nltk.download('cmudict')
+#nltk.download('cmudict')
 
 def createDB(source_dir='en/clips', database='ml-commons.db'):
 
@@ -95,7 +95,7 @@ def createDB(source_dir='en/clips', database='ml-commons.db'):
   SQL="CREATE TABLE phones (word_id INTEGER, "
   phone_count = 1
   SQL_phones = ""
-  while phone_count < 20:
+  while phone_count < 25:
     SQL_phones = SQL_phones + "phone" + str(phone_count) + " TEXT, "
     phone_count += 1
   SQL_phones = SQL_phones + "phone INTEGER);"

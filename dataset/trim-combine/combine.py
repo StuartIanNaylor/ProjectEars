@@ -57,27 +57,31 @@ def combine(kw1_dir='./kw1', kw2_dir='./kw2', dest_dir='./out', kw_target=1000, 
   
   while kw1_count < kw_target:
     kw1_index = random.randint(0, len(kw1) - 1)
-    target_freq = kw1[kw1_index][0]
-    kw2_count = 0
-    match = False
-    while kw2_count < len(kw2):
-      if target_freq <= kw2[kw2_count][0]:
-        if kw2_count - kw_range >= 0:
-          kw_min = kw2_count - kw_range
-        else:
-          kw_min = 0
-        if kw2_count + kw_range < len(kw2):
-          kw_max = kw2_count + kw_range
-        else:
-          kw_max = len(kw2) -1
-        match = True
-        kw2_index = random.randint(kw_min, kw_max)
+    kw2_index = random.randint(0, len(kw2) - 1)
+    #target_freq = kw1[kw1_index][0]
+    #kw2_count = 0
+    #match = False
+    #while kw2_count < len(kw2):
+      #print(target_freq, kw2[kw2_count][0])
+      #if target_freq <= kw2[kw2_count][0]:
+        #if kw2_count - kw_range >= 0:
+          #kw_min = kw2_count - kw_range
+        #else:
+          #kw_min = 0
+        #if kw2_count + kw_range < len(kw2):
+          #kw_max = kw2_count + kw_range
+        #else:
+          #kw_max = len(kw2) -1
+        #match = True
+        #kw2_index = random.randint(kw_min, kw_max)
+        #kw2_index = kw2_count
         #print(target_freq, kw2[kw2_index][0], kw1_count, kw2_count)
-        sox_combine(kw1[kw1_index][1], kw2[kw2_index][1], dest_dir, overlap, kw1[kw1_index][2])
-        break
-      kw2_count += 1
-    if match == True:
-      kw1_count += 1
+    sox_combine(kw1[kw1_index][1], kw2[kw2_index][1], dest_dir, overlap, kw1[kw1_index][2])
+        #print(kw1[kw1_index][1], kw2[kw2_index][1], dest_dir, overlap, kw1[kw1_index][2])
+        #break
+      #kw2_count += 1
+    #if match == True:
+    kw1_count += 1
 
     
 def main_body():

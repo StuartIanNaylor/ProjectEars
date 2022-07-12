@@ -26,4 +26,6 @@ Its advisable to do a quick test to make sure the input levels are ok
 
 ./ml-commons creates sqlite ml-commons database for analysis and various other ml-commons tools
 
+With bin/fe as it seems very sensitive to the wonderful MS wav headers use `sox 0a7c2a8d_nohash_0.wav -t wav - | bin/fe` than read files direct
+
 
