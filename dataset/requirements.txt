@@ -7,3 +7,4 @@ nltk
 keyboard
 soundcard
 websockets
+tensorflow

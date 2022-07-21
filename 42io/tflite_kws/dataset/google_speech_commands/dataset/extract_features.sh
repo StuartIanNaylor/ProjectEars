@@ -16,13 +16,13 @@ if [ '1' != `find "${DATASET_WANTED_DIR}/training/" -mindepth 1 -type d | xargs 
   exit 1
 fi
 
-echo "Checking keyword dataset for duplicates..."
-if [ '0' != `fdupes -r "${DATASET_WANTED_DIR}" | wc -l` ]; then
-  echo "ASSERT: duplicates found"
-  exit 2
-fi
+#echo "Checking keyword dataset for duplicates..."
+#if [ '0' != `fdupes -r "${DATASET_WANTED_DIR}" | wc -l` ]; then
+#  echo "ASSERT: duplicates found"
+#  exit 2
+#fi
 
-bash ./../src/features/build.sh
+#bash ./../src/features/build.sh
 
 rm -f "${DATA_FILE}"
 

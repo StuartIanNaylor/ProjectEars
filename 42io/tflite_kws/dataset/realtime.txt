@@ -2,7 +2,11 @@ argmax() { mawk -Winteractive '{m=$1;j=1;for(i=j;i<=NF;i++)if($i>m){m=$i;j=i;}pr
 stable() { mawk -Winteractive -v u=$1 '{if(x!=$1){c=0;x=$1}else if(++c==u&&y!=x)print y=x}'; }
 ignore() { mawk -Winteractive -v t=$1 '{if($1<t)print $1}'; }
 
+# Simple argmax count method
+#arecord -f S16_LE -c1 -r16000 -t raw | ../bin/fe | \
+#   ../bin/guess stream-dcnn.tflite | argmax | stable 10 | ignore 10
 
+# View all indexes realtime
 arecord -f S16_LE -c1 -r16000 -t raw | ../bin/fe | \
-   ../bin/guess dcnn.tflite | argmax | stable 10 | ignore 10
+   ../bin/guess stream-dcnn1.tflite 
    

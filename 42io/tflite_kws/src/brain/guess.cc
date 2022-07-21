@@ -67,7 +67,7 @@ static void print_output(float* data, size_t sz_bytes)
   size_t len = sz_bytes / sizeof(*data);
   for(size_t i = 0, j = len - 1; i < len; i++)
   {
-    printf("%f%c", data[i], i == j ? '\n' : ' ');
+    printf("%18.17f%c", data[i], i == j ? '\n' : ' ');
   }
 }
 

@@ -79,14 +79,14 @@ def build_model(streaming=False):
   x = keras.layers.Conv1D(128, 1, use_bias=False)(x)
   x = keras.layers.BatchNormalization()(x)
   x = keras.layers.ReLU()(x)
-  x = keras.layers.SpatialDropout1D(0.2)(x)
+  x = keras.layers.SpatialDropout1D(0.1)(x)
 
   for i in range(4):
     x = streaming_input_output(streaming, 1 + 2**i, inputs, outputs, x)
     x = keras.layers.SeparableConv1D(128, 2, dilation_rate=2**i, use_bias=False)(x)
     x = keras.layers.BatchNormalization()(x)
     x = keras.layers.ReLU()(x)
-    x = keras.layers.SpatialDropout1D(0.2)(x)
+    x = keras.layers.SpatialDropout1D(0.1)(x)
 
   x = streaming_input_output(streaming, 32, inputs, outputs, x)
   x = keras.layers.AveragePooling1D(x.shape[1])(x)
@@ -95,7 +95,7 @@ def build_model(streaming=False):
   x = keras.layers.Dense(128, use_bias=False)(x)
   x = keras.layers.BatchNormalization()(x)
   x = keras.layers.ReLU()(x)
-  x = keras.layers.Dropout(0.2)(x)
+  x = keras.layers.Dropout(0.1)(x)
 
   x = keras.layers.Dense(12)(x)
   x = keras.layers.Softmax()(x)
@@ -115,7 +115,7 @@ model.compile(loss=keras.losses.sparse_categorical_crossentropy,
 early_stopping = keras.callbacks.EarlyStopping(
         monitor='val_loss',
         mode='min',
-        verbose=1,
+        verbose=2,
         patience=100,
         restore_best_weights=True)
 
@@ -123,7 +123,7 @@ history = model.fit(train_dataset,
                     validation_data=(x_valid, y_valid),
                     callbacks=[early_stopping],
                     verbose=2,
-                    epochs=100500)
+                    epochs=2000)
 
 
 results = model.evaluate(x_train, y_train, verbose=0)
@@ -135,7 +135,17 @@ print('test loss, test acc:', results)
 results = model.evaluate(x_valid, y_valid, verbose=0)
 print('valid loss, valid acc:', results)
 
+model.save('non-stream-dcnn')
+
+converter = tf.lite.TFLiteConverter.from_keras_model(model)
+converter.experimental_new_converter = False
+tflite_model = converter.convert()
+with open("non-stream-dcnn.tflite", "wb") as f:
+  f.write(tflite_model)
+
 stream_model = build_model(True)
+
+stream_model.save('stream-dcnn')
 
 # copy weights from old model to new one
 for layer in stream_model.layers:
@@ -146,5 +156,5 @@ for layer in stream_model.layers:
 converter = tf.lite.TFLiteConverter.from_keras_model(stream_model)
 converter.experimental_new_converter = False
 tflite_model = converter.convert()
-with open("dcnn.tflite", "wb") as f:
+with open("stream-dcnn.tflite", "wb") as f:
   f.write(tflite_model)
