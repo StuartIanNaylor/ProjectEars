@@ -21,4 +21,7 @@ The repo does contain the en dataset already in ml-commons.db but may become out
 
 ./word2wav.py -h for parameter help
 
+Unremark https://github.com/StuartIanNaylor/ProjectEars/blob/b7cd9dfac20958e594194a3adb880ff0b8df1c68/dataset/ml-commons/create-db.py#L53
+and https://github.com/StuartIanNaylor/ProjectEars/blob/b7cd9dfac20958e594194a3adb880ff0b8df1c68/dataset/ml-commons/create-db.py#L41 to initialise cmudict.
+If you make changes or change lang remark to stop overwrites.
 
